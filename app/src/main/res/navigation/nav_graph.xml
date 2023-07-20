@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/m001HomeFragment">
+
+    <fragment
+        android:id="@+id/m001HomeFragment"
+        android:name="com.hidenobi.baseapplication.ui.fragment.M001HomeFragment"
+        android:label="m001_home_fragment"
+        tools:layout="@layout/m001_home_fragment" />
+</navigation>
