@@ -3,12 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".ui.fragment.M001HomeFragment">
 
-    <TextView
-        android:id="@+id/tv_hello_world"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_request_permission"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
+        android:text="Request permission" />
 
+    <Button
+        android:id="@+id/btn_broken_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Broken 1" />
+
+    <Button
+        android:id="@+id/btn_broken_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Broken 2" />
 </LinearLayout>

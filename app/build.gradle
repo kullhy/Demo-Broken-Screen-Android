@@ -7,19 +7,19 @@ plugins {
 
 android {
     namespace 'com.hidenobi.baseapplication'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.hidenobi.baseapplication"
         minSdk 26
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // init name apk for debug or release
-        android.applicationVariants.all { variant ->
-            variant.outputs.all {
+        android.applicationVariants.configureEach { variant ->
+            variant.outputs.configureEach {
                 outputFileName = "${variant.applicationId}_${variant.baseName}_${variant.versionName}.apk"
             }
         }
@@ -50,20 +50,20 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //    implement fragment
-    def fragment_version = "1.6.0"
+    def fragment_version = "1.6.2"
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
     //    implement navigation
-    def nav_version = "2.6.0"
+    def nav_version = "2.7.6"
     // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
@@ -75,7 +75,7 @@ dependencies {
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
 
     //    implement Room (For database)
-    def room_version = "2.5.2"
+    def room_version = "2.6.1"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
@@ -83,9 +83,9 @@ dependencies {
 
     //    implement Lifecycle components
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.2"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
 
     // implement Gson
-    implementation 'com.google.code.gson:gson:2.9.1'
+    implementation 'com.google.code.gson:gson:2.10'
 }
