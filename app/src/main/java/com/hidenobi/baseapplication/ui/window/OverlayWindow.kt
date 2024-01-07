@@ -1,7 +1,10 @@
 package com.hidenobi.baseapplication.ui.window
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.graphics.PixelFormat
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +12,11 @@ import android.view.WindowManager
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import com.hidenobi.baseapplication.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.net.URL
 
 class OverlayWindow(
     @DrawableRes drawableId: Int? = R.drawable.broken_1,
@@ -28,6 +36,7 @@ class OverlayWindow(
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
     private var layoutInflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private val scope = CoroutineScope(Dispatchers.Main)
 
     init {
         view = layoutInflater.inflate(
@@ -58,6 +67,29 @@ class OverlayWindow(
         view.invalidate()
         try {
             windowManager.updateViewLayout(view, params)
+        } catch (e: Exception) {
+            Log.e(TAG, "updateView: ", e)
+        }
+    }
+
+    fun updateView(path: String) {
+        try {
+            scope.launch {
+                val url = URL(path)
+                var drawable: Drawable?
+                withContext(Dispatchers.IO) {
+                    drawable = BitmapDrawable(
+                        context.resources,
+                        BitmapFactory.decodeStream(url.openConnection().getInputStream())
+                    )
+                }
+                view.background = drawable
+                view.invalidate()
+
+                windowManager.updateViewLayout(view, params)
+            }
+
+
         } catch (e: Exception) {
             Log.e(TAG, "updateView: ", e)
         }

@@ -44,6 +44,9 @@ class M001HomeFragment : BaseFragment<M001HomeFragmentBinding, HomeViewModel>() 
             btnBroken2.setOnClickListener {
                 overlayWindow.updateView(R.drawable.broken_2)
             }
+            btnBrokenUrl.setOnClickListener {
+                overlayWindow.updateView("https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/387841437_1993233967706809_2236545820343533675_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeExIk0Os-dN4NlvyadFkVrGk9UsyvXYbS-T1SzK9dhtLwbYq0bk_UlJgSrypIJN-e5yqs8df0TXPI9vtvfSZHu3&_nc_ohc=4Yejovmp-HkAX_D5_v8&_nc_ht=scontent.fhan14-3.fna&oh=00_AfAzBIVgwZ1N2Rhsy_LgpwNw4YDlFZzH3Th3gcsC0p6BXA&oe=65A00820")
+            }
         }
     }
 
